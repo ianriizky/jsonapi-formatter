@@ -1,0 +1,33 @@
+# GitHub Action for Node.js
+# https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+name: Test Node.js
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Node.js ${{ matrix.node-version }}
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16, 18]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build --if-present
+
+      - name: Test with mocha
+        run: npm test

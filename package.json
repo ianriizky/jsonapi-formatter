@@ -1,0 +1,34 @@
+{
+  "name": "@ianriizky/jsonapi-formatter",
+  "version": "1.0.0",
+  "description": "A Node.js library to serialize/deserialize your data into JSON:API format",
+  "main": "src/JsonApi.js",
+  "engineStrict": true,
+  "engines": {
+    "node": ">=0.12"
+  },
+  "scripts": {
+    "test": "mocha $(find tests -name '*.js') --timeout 10000 --exit",
+    "requirements-check": "babel-node check-version.js",
+    "postinstall": "npm run requirements-check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ianriizky/jsonapi-formatter.git"
+  },
+  "keywords": [
+    "Node.js",
+    "JSON:API",
+    "Prisma.js"
+  ],
+  "author": "Septianata Rizky Pratama",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ianriizky/jsonapi-formatter/issues"
+  },
+  "homepage": "https://github.com/ianriizky/jsonapi-formatter#readme",
+  "devDependencies": {
+    "@babel/node": "^7.18.9",
+    "mocha": "^10.0.0"
+  }
+}
