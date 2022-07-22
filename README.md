@@ -7,7 +7,7 @@ A Node.js library to serialize/deserialize your data into JSON:API format.
 
 ## Requirement
 
-- Node.js >=0.12
+- Node.js >=10.0.0
 
 ## Instalation
 
