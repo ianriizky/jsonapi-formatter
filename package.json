@@ -15,7 +15,7 @@
     "lint": "npx eslint --ignore-path .gitignore --ext .js,.ts .",
     "lint:fix": "npm run lint -- --fix",
     "prettier": "npx prettier --ignore-path .gitignore --check \"**/*.+(js|ts|json)\"",
-    "prettier:fix": "npx prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+    "prettier:fix": "npm run prettier --write \"**/*.+(js|ts|json)\"",
     "format": "npm run prettier:fix && npm run lint:fix",
     "test": "jest",
     "prepare": "npm run build",
