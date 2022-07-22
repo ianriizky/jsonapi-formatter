@@ -11,6 +11,7 @@ const config: Config.InitialOptions = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
+  collectCoverage: true,
 };
 
 export default config;
