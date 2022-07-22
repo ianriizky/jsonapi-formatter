@@ -1,7 +1,7 @@
 {
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 5,
+    "ecmaVersion": 12,
     "sourceType": "module"
   },
   "plugins": ["@typescript-eslint", "jest"],
@@ -14,6 +14,7 @@
   "rules": {},
   "env": {
     "browser": true,
+    "node": true,
     "es2021": true
   }
 }
