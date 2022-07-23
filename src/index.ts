@@ -1,3 +1,1 @@
-class JsonApi {
-  constructor() {}
-}
+export { JsonApi } from './JsonApi';
