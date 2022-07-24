@@ -12,7 +12,7 @@ import { JsonApiErrors } from './Structure/JsonApiErrors';
 export class JsonApiException extends AbstractJsonApi implements HasErrors {
   public httpStatusCode: number = StatusCodes.INTERNAL_SERVER_ERROR;
 
-  public showMetaOnError: boolean = true;
+  public showMetaOnError = true;
 
   public errors: ErrorStructure[] = [];
 
@@ -115,6 +115,7 @@ export class JsonApiException extends AbstractJsonApi implements HasErrors {
   }
 
   public deserialize(value: object): this {
+    value;
     throw new Error('Method not implemented.');
   }
 }

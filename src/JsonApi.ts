@@ -35,6 +35,7 @@ export class JsonApi extends AbstractJsonApi implements HasData {
   }
 
   public deserialize(value: object): this {
+    value;
     throw new Error('Method not implemented.');
   }
 }
