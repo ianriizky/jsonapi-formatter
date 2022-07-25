@@ -1,8 +1,12 @@
 import { StatusCodes } from 'http-status-codes';
 import { AbstractJsonApi } from './AbstractJsonApi';
 import { HasData } from './Contract/HasData';
-import { Data } from './Structure/Data';
-import { JsonApiData } from './Structure/JsonApiData';
+import {
+  DataArray,
+  DataSingle,
+  DataType,
+  JsonApiData,
+} from './Structure/JsonApiData';
 
 /**
  * @see: https://jsonapi.org/format
@@ -10,7 +14,21 @@ import { JsonApiData } from './Structure/JsonApiData';
 export class JsonApi extends AbstractJsonApi implements HasData {
   public httpStatusCode: number = StatusCodes.OK;
 
-  public data: Data | Data[] | null | [] = null;
+  public data: DataType;
+
+  public setData(data: DataSingle | DataArray): this {
+    this.data = data;
+
+    return this;
+  }
+
+  public setDataAsSingle(data: DataSingle): this {
+    return this.setData(data);
+  }
+
+  public setDataAsArray(data: DataArray): this {
+    return this.setData(data);
+  }
 
   public serialize(): JsonApiData {
     return {
@@ -18,20 +36,6 @@ export class JsonApi extends AbstractJsonApi implements HasData {
       meta: this.meta,
       data: this.data,
     };
-  }
-
-  public setData(data: Data | Data[] | null | []): this {
-    this.data = data;
-
-    return this;
-  }
-
-  public setDataAsSingle(data: Data | null): this {
-    return this.setData(data);
-  }
-
-  public setDataAsArray(data: Data[] | []): this {
-    return this.setData(data);
   }
 
   public deserialize(value: object): this {

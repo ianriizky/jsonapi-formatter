@@ -1,7 +1,7 @@
-import { Data } from '../Structure/Data';
+import { DataArray, DataSingle } from '../Structure/JsonApiData';
 
 export interface HasData {
-  setData(data: Data | Data[] | null | []): this;
-  setDataAsSingle(data: Data | null): this;
-  setDataAsArray(data: Data[] | []): this;
+  setData(data: DataSingle | DataArray): this;
+  setDataAsSingle(data: DataSingle): this;
+  setDataAsArray(data: DataArray): this;
 }
