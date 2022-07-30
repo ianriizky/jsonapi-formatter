@@ -1,24 +1,44 @@
+import { Config } from './Config';
 import { HasJsonApiData } from './Contract/HasJsonApiData';
 import { JsonApi } from './JsonApi';
 import { CompoundDocuments } from './Structure/CompoundDocuments';
 import { Links } from './Structure/Links';
 import { MetaInformation } from './Structure/MetaInformation';
 import { PrimaryData } from './Structure/PrimaryData';
+import {
+  ResourceObjects,
+  ResourceObjectsArray,
+  ResourceObjectsNull,
+} from './Structure/ResourceObjects';
 import { TopLevelWithData } from './Structure/TopLevel';
 
 /**
  * @see: https://jsonapi.org/format
  */
 export class JsonApiData extends JsonApi implements HasJsonApiData {
-  public data: PrimaryData = null;
+  protected data: PrimaryData = null;
   public links!: Links;
   public included!: CompoundDocuments;
   public meta?: MetaInformation;
 
-  public setData(data?: PrimaryData): this {
-    if (data) {
-      this.data = data;
+  public get dataAsObject(): ResourceObjects | ResourceObjectsNull {
+    if (Array.isArray(this.data)) {
+      return this.data[0];
     }
+
+    return this.data;
+  }
+
+  public get dataAsArray(): ResourceObjectsArray {
+    if (!Array.isArray(this.data)) {
+      return [];
+    }
+
+    return this.data;
+  }
+
+  public setData(data: PrimaryData): this {
+    this.data = data;
 
     return this;
   }
@@ -64,5 +84,12 @@ export class JsonApiData extends JsonApi implements HasJsonApiData {
       .setLinks(serialize.links)
       .setIncluded(serialize.included)
       .setMeta(serialize.meta);
+  }
+
+  public static deserialize(
+    serialize: TopLevelWithData,
+    config?: Config
+  ): JsonApiData {
+    return new this(config).deserialize(serialize);
   }
 }

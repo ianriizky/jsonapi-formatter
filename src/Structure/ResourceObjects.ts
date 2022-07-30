@@ -5,12 +5,15 @@ import { Relationships } from './Relationships';
 /**
  * @see: https://jsonapi.org/format/#document-resource-objects
  */
-export type ResourceObjects = {
+export interface ResourceObjects {
   type: string;
   id: string;
-  attributes: Attributes;
-  relationships: Relationships;
-  links: Links;
-} | null;
+  attributes?: Attributes;
+  relationships?: Relationships;
+  links?: Links;
+}
 
-export type ResourceObjectsArray = ResourceObjects[];
+export interface ResourceObjectsArray
+  extends Array<ResourceObjects | ResourceObjectsNull> {}
+
+export type ResourceObjectsNull = null;

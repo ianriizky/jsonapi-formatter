@@ -3,4 +3,4 @@ import { ResourceObjectsArray } from './ResourceObjects';
 /**
  * @see: https://jsonapi.org/format/#document-compound-documents
  */
-export type CompoundDocuments = ResourceObjectsArray;
+export interface CompoundDocuments extends ResourceObjectsArray {}

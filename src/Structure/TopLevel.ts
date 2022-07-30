@@ -8,22 +8,22 @@ import { Version } from './Version';
 /**
  * @see: https://jsonapi.org/format/#document-top-level
  */
-export type TopLevel = {
+export interface TopLevel {
   jsonapi: Version;
-};
+}
 
-export type TopLevelWithMeta = TopLevel & {
+export interface TopLevelWithMeta extends TopLevel {
   meta: MetaInformation;
-};
+}
 
-export type TopLevelWithData = TopLevel & {
+export interface TopLevelWithData extends TopLevel {
   data: PrimaryData;
   links?: Links;
   included?: CompoundDocuments;
   meta?: MetaInformation;
-};
+}
 
-export type TopLevelWithErrors = TopLevel & {
-  errors: ErrorObjects[];
+export interface TopLevelWithErrors extends TopLevel {
+  errors: Array<ErrorObjects>;
   meta?: MetaInformation;
-};
+}

@@ -5,7 +5,7 @@ import { MetaInformation } from './MetaInformation';
 /**
  * @see: https://jsonapi.org/format/#error-objects
  */
-export type ErrorObjects = {
+export interface ErrorObjects {
   id?: string | number;
   links?: Links;
   status?: string;
@@ -14,4 +14,4 @@ export type ErrorObjects = {
   detail?: string;
   source?: ErrorSource;
   meta?: MetaInformation;
-};
+}

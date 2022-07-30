@@ -3,7 +3,7 @@ import { MetaInformation } from './MetaInformation';
 /**
  * @see: https://jsonapi.org/format/#document-links
  */
-export type LinkObject = {
+export interface LinkObject {
   href: string;
   meta: MetaInformation;
-};
+}

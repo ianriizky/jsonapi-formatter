@@ -1,6 +1,6 @@
 /**
  * @see: https://jsonapi.org/format/#document-meta
  */
-export type MetaInformation = {
+export interface MetaInformation {
   [key: string]: any;
-};
+}

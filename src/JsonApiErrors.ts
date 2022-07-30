@@ -15,7 +15,7 @@ export class JsonApiErrors extends JsonApi implements HasJsonApiErrors {
 
   public showMetaOnError = true;
 
-  public errors: ErrorObjects[] = [];
+  public errors: Array<ErrorObjects> = [];
   public meta?: MetaInformation;
 
   public constructor(config?: Config) {
@@ -38,7 +38,7 @@ export class JsonApiErrors extends JsonApi implements HasJsonApiErrors {
     return this;
   }
 
-  public setErrors(errors?: ErrorObjects | ErrorObjects[]): this {
+  public setErrors(errors?: ErrorObjects | Array<ErrorObjects>): this {
     if (errors) {
       if (!Array.isArray(errors)) {
         errors = [errors];
