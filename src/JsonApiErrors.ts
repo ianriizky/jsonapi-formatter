@@ -57,24 +57,51 @@ export class JsonApiErrors extends JsonApi implements HasJsonApiErrors {
   }
 
   public setErrorsFromNodejs(error: Error): this {
-    const parsedError = ErrorStackParser.parse(error);
+    try {
+      const parsedError = ErrorStackParser.parse(error);
 
-    return this.setErrors({
-      detail: error.message,
-      meta: {
-        details: parsedError[0].toString(),
-        exception: error.name,
-        file: parsedError[0].getFileName(),
-        line: parsedError[0].getLineNumber(),
-        trace: parsedError.map(parsedError => ({
-          details: parsedError.toString(),
-          file: parsedError.getFileName(),
-          line: parsedError.getLineNumber(),
-          function: parsedError.getFunctionName(),
-          source: parsedError.getSource(),
-        })),
-      },
-    });
+      return this.setErrors({
+        detail: error.message,
+        meta: {
+          details: parsedError[0].toString(),
+          exception: error.name,
+          file: parsedError[0].getFileName(),
+          line: parsedError[0].getLineNumber(),
+          trace: parsedError.map(parsedError => ({
+            details: parsedError.toString(),
+            file: parsedError.getFileName(),
+            line: parsedError.getLineNumber(),
+            function: parsedError.getFunctionName(),
+            source: parsedError.getSource(),
+          })),
+        },
+      });
+    } catch (error) {
+      if (error instanceof Error) {
+        const parsedError = ErrorStackParser.parse(error);
+
+        return this.setErrors({
+          detail: error.message,
+          meta: {
+            details: parsedError[0].toString(),
+            exception: error.name,
+            file: parsedError[0].getFileName(),
+            line: parsedError[0].getLineNumber(),
+            trace: parsedError.map(parsedError => ({
+              details: parsedError.toString(),
+              file: parsedError.getFileName(),
+              line: parsedError.getLineNumber(),
+              function: parsedError.getFunctionName(),
+              source: parsedError.getSource(),
+            })),
+          },
+        });
+      }
+
+      return this.setErrorsFromNodejs(
+        new Error('The given error can"t be parsed.')
+      );
+    }
   }
 
   protected parseError(error: ErrorObjects): ErrorObjects {
