@@ -10,6 +10,7 @@ export abstract class JsonApi implements HasJsonApi {
   };
 
   public httpStatusCode: StatusCodes = StatusCodes.OK;
+  public readonly contentType = 'application/vnd.api+json';
 
   public jsonapi: Version = {
     version: '1.0',
