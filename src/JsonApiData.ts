@@ -4,6 +4,7 @@ import { JsonApi } from './JsonApi';
 import { CompoundDocuments } from './Structure/CompoundDocuments';
 import { Links } from './Structure/Links';
 import { MetaInformation } from './Structure/MetaInformation';
+import { PaginationLinks } from './Structure/PaginationLinks';
 import { PrimaryData } from './Structure/PrimaryData';
 import {
   ResourceObjects,
@@ -17,7 +18,7 @@ import { TopLevelWithData } from './Structure/TopLevel';
  */
 export class JsonApiData extends JsonApi implements HasJsonApiData {
   protected data: PrimaryData = null;
-  public links!: Links;
+  public links!: Links | PaginationLinks;
   public included!: CompoundDocuments;
   public meta?: MetaInformation;
 
@@ -43,7 +44,7 @@ export class JsonApiData extends JsonApi implements HasJsonApiData {
     return this;
   }
 
-  public setLinks(links?: Links): this {
+  public setLinks(links?: Links | PaginationLinks): this {
     if (links) {
       this.links = links;
     }

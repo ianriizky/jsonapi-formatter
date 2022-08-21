@@ -2,6 +2,7 @@ import { CompoundDocuments } from './CompoundDocuments';
 import { ErrorObjects } from './ErrorObjects';
 import { Links } from './Links';
 import { MetaInformation } from './MetaInformation';
+import { PaginationLinks } from './PaginationLinks';
 import { PrimaryData } from './PrimaryData';
 import { Version } from './Version';
 
@@ -18,7 +19,7 @@ export interface TopLevelWithMeta extends TopLevel {
 
 export interface TopLevelWithData extends TopLevel {
   data: PrimaryData;
-  links?: Links;
+  links?: Links | PaginationLinks;
   included?: CompoundDocuments;
   meta?: MetaInformation;
 }
