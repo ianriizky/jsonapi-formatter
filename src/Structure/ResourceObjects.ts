@@ -13,7 +13,6 @@ export interface ResourceObjects {
   links?: Links;
 }
 
-export interface ResourceObjectsArray
-  extends Array<ResourceObjects | ResourceObjectsNull> {}
+export type ResourceObjectsArray = Array<ResourceObjects | ResourceObjectsNull>;
 
 export type ResourceObjectsNull = null;
