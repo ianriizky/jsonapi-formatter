@@ -1,6 +1,6 @@
 {
   "name": "@ianriizky/jsonapi-formatter",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A Node.js library to serialize/deserialize your data into JSON:API format.",
   "type": "commonjs",
   "main": "dist/index.js",
