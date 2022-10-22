@@ -1,6 +1,9 @@
 import { LinkObject } from './LinkObject';
 
-export type Links = {
+/**
+ * @see: https://jsonapi.org/format/#document-links
+ */
+export interface Links {
   self: string | LinkObject;
   related?: string | LinkObject;
-};
+}

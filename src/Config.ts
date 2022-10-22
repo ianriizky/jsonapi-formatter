@@ -1,5 +1,5 @@
-export type JsonApiConfig = {
+export interface Config {
   app_url: string;
   version?: '1.0' | '1.1';
   show_meta_on_error?: boolean;
-};
+}
